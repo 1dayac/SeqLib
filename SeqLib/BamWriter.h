@@ -62,7 +62,7 @@ class BamWriter  {
    * @param f Path to the output BAM/SAM/CRAM or "-" for stdout
    * @return False if cannot openf for writing
    */
-  bool Open(const std::string& f);
+  bool Open(const std::string& f, const std::string &mode = "wb");
   
   /** Return if the writer has opened the file */
   bool IsOpen() const { return fop.get() != NULL; }

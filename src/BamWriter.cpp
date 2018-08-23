@@ -66,7 +66,7 @@ bool BamWriter::BuildIndex() const {
 
 }
 
-  bool BamWriter::Open(const std::string& f) {
+  bool BamWriter::Open(const std::string& f, const std::string& mode) {
 
     // don't reopen
     if (fop)
@@ -75,7 +75,10 @@ bool BamWriter::BuildIndex() const {
     m_out = f;
 
     // hts open the writer
-    fop = SeqPointer<htsFile>(hts_open(m_out.c_str(), output_format.c_str()), htsFile_delete());
+    if (mode == "wa")
+        fop = SeqPointer<htsFile>(hts_open(m_out.c_str(), mode.c_str()), htsFile_delete());
+    else
+        fop = SeqPointer<htsFile>(hts_open(m_out.c_str(), output_format.c_str()), htsFile_delete());
 
     if (!fop) {
       return false;
