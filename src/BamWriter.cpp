@@ -75,7 +75,7 @@ bool BamWriter::BuildIndex() const {
     m_out = f;
 
     // hts open the writer
-    if (mode == "wa")
+    if (mode == "ab")
         fop = SeqPointer<htsFile>(hts_open(m_out.c_str(), mode.c_str()), htsFile_delete());
     else
         fop = SeqPointer<htsFile>(hts_open(m_out.c_str(), output_format.c_str()), htsFile_delete());
