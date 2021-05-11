@@ -494,7 +494,7 @@ namespace SeqLib {
   }
 
 
-    inline bool GetATag(const std::string& tag, int32_t& t) const {
+    bool BamRecord::GetATag(const std::string& tag, int32_t& t) const {
         uint8_t* p = bam_aux_get(b.get(),tag.c_str());
         if (!p)
             return false;
