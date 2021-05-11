@@ -689,6 +689,8 @@ class BamRecord {
    * @return Returns true if the tag is present, even if empty. Return false if no tag or not a Z tag.
    */
   bool GetZTag(const std::string& tag, std::string& s) const;
+
+  bool GetATag(const std::string& tag, std::string& s) const;
   
   /** Get a string of either Z, f or i type. Useful if tag type not known at compile time.
    * @param tag Name of the tag. eg "XP"

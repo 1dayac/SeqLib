@@ -493,6 +493,19 @@ namespace SeqLib {
     return true;
   }
 
+
+    inline bool GetATag(const std::string& tag, int32_t& t) const {
+        uint8_t* p = bam_aux_get(b.get(),tag.c_str());
+        if (!p)
+            return false;
+        t = bam_aux2A(p);
+        int type = *p++;
+        if (!(type == 'A'))
+            return false;
+
+        return true;
+    }
+
   
   // get a string tag that might be separted by "x"
   std::vector<std::string> BamRecord::GetSmartStringTag(const std::string& tag) const {
